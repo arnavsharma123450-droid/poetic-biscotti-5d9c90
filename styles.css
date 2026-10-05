@@ -1,0 +1,317 @@
+/* ==========================================================================
+   KisanDirect Design System & Custom Styling
+   Enterprise B2B Agritech Platform
+   ========================================================================== */
+
+:root {
+  --primary-emerald: #065F46;
+  --primary-emerald-hover: #047857;
+  --primary-emerald-dark: #022c22;
+  --secondary-mint: #ECFDF5;
+  --mint-accent: #A7F3D0;
+  --cta-amber: #D97706;
+  --cta-amber-hover: #B45309;
+  --cta-amber-light: #FEF3C7;
+  --slate-dark: #0F172A;
+  --slate-body: #334155;
+  --slate-muted: #64748B;
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --success: #10B981;
+  --danger: #EF4444;
+  --info: #0284C7;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(6, 95, 70, 0.08), 0 4px 6px -4px rgba(6, 95, 70, 0.05);
+  --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.25);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+/* Global Smoothness */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--slate-dark);
+}
+
+body {
+  background-color: #F8FAFC;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.glass-dark {
+  background: rgba(6, 95, 70, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Mandi Ticker Keyframe Animation */
+@keyframes tickerRoll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerRoll 32s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Glow & Pulse Effects */
+.glow-emerald {
+  box-shadow: 0 0 25px rgba(6, 95, 70, 0.2);
+}
+
+.glow-amber {
+  box-shadow: 0 0 25px rgba(217, 119, 6, 0.25);
+}
+
+.glow-emerald-pulse {
+  animation: emeraldPulse 2.5s infinite;
+}
+
+@keyframes emeraldPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+}
+
+/* Custom Tab Transitions */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient Text */
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #065F46 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(135deg, #B45309 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero Background Grid Pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(6, 95, 70, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Produce Card Hover Lift */
+.produce-card {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.produce-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -10px rgba(6, 95, 70, 0.14);
+}
+
+/* Badge Styling */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  line-height: 1.25;
+}
+
+.badge-emerald {
+  background-color: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.badge-amber {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+.badge-blue {
+  background-color: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+}
+
+.badge-purple {
+  background-color: #F5F3FF;
+  color: #5B21B6;
+  border: 1px solid #DDD6FE;
+}
+
+/* Escrow Step Progress Line */
+.escrow-step-line {
+  position: absolute;
+  top: 1.25rem;
+  left: 2rem;
+  right: 2rem;
+  height: 3px;
+  background: #E2E8F0;
+  z-index: 0;
+}
+
+.escrow-step-progress {
+  height: 100%;
+  background: #10B981;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Quality Scanning Radar Wave */
+@keyframes scanSweep {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.2;
+  }
+}
+
+.scanner-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #10B981, #34D399, transparent);
+  box-shadow: 0 0 12px #10B981;
+  animation: scanSweep 2s infinite ease-in-out;
+}
+
+/* Modal Backdrop */
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 0.2s ease;
+}
+
+/* Toast Notifications */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+}
+
+.toast-item {
+  transform: translateX(120%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.toast-item.show {
+  transform: translateX(0);
+}
+
+/* Sourcing Passport Stamp */
+.passport-stamp {
+  border: 2px dashed #065F46;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  display: inline-block;
+  transform: rotate(-3deg);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #065F46;
+  background: #ECFDF5;
+}
+
+/* Interactive Slider Custom Styling */
+input[type="range"] {
+  accent-color: #065F46;
+}
+
+/* Print Invoice / e-Challan Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #challan-modal, #challan-modal * {
+    visibility: visible;
+  }
+  #challan-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

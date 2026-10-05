@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KisanDirect | Empowering Farmers • Eliminating Middlemen</title>
+  <meta name="description" content="India's leading B2B agritech direct trade platform connecting farmers directly to supermarkets, retail chains, and wholesale marts with guaranteed escrow payouts and 0% dalal cut.">
+  <meta name="keywords" content="agritech, kisan, direct farm to retail, mandi price, apmc, cold chain logistics, agricultural escrow, zero middlemen">
+  <meta property="og:title" content="KisanDirect - Farm to Supermarket Direct Marketplace">
+  <meta property="og:description" content="Direct produce procurement with 0% middleman cut. Real-time APMC index, AI quality grading, and guaranteed escrow settlements.">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              50: '#ECFDF5',
+              100: '#D1FAE5',
+              200: '#A7F3D0',
+              300: '#6EE7B7',
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065F46', // Primary Brand Color
+              900: '#064E3B',
+              950: '#022c22'
+            },
+            amber: {
+              50: '#FFFBEB',
+              100: '#FEF3C7',
+              200: '#FDE68A',
+              300: '#FCD34D',
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706', // Brand CTA Accent
+              700: '#B45309',
+              800: '#92400E',
+              900: '#78350F'
+            },
+            slate: {
+              850: '#151F33',
+              900: '#0F172A' // Dark Neutral
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- KisanDirect Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-emerald-200 selection:text-emerald-900">
+
+  <!-- ========================================================================= -->
+  <!-- 1. LIVE MANDI / APMC PRICE TICKER RIBBON -->
+  <!-- ========================================================================= -->
+  <div class="bg-emerald-950 text-emerald-100 border-b border-emerald-900/60 overflow-hidden py-1.5 px-3 text-xs font-medium tracking-wide">
+    <div class="max-w-7xl mx-auto flex items-center">
+      <div class="flex items-center gap-1.5 shrink-0 bg-emerald-900/90 text-emerald-200 px-2.5 py-0.5 rounded-md font-bold text-[11px] mr-3 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 -ml-2.5"></span>
+        LIVE APMC TICKER
+      </div>
+      <div class="overflow-hidden relative w-full whitespace-nowrap">
+        <div class="ticker-track flex items-center gap-8">
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Nashik Red Onion:</strong> ₹2,450/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +4.2%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Agra Kufri Potato:</strong> ₹1,680/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +2.1%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Kolar Hybrid Tomato:</strong> ₹1,980/q <span class="text-red-400 font-semibold bg-red-950/40 px-1 rounded">▼ -1.4%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">MP Sharbati Wheat:</strong> ₹3,150/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +3.5%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Shimla Royal Apple:</strong> ₹9,400/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +4.8%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Nagpur Mandarin:</strong> ₹4,200/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +1.2%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Guntur Sannam Chilli:</strong> ₹18,900/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +2.5%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Jalgaon Banana:</strong> ₹1,850/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +0.9%</span></span>
+          <!-- Repeating loop for seamless continuous scrolling -->
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Nashik Red Onion:</strong> ₹2,450/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +4.2%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Agra Kufri Potato:</strong> ₹1,680/q <span class="text-emerald-400 font-semibold bg-emerald-900/40 px-1 rounded">▲ +2.1%</span></span>
+          <span class="inline-flex items-center gap-1.5"><strong class="text-white">Kolar Hybrid Tomato:</strong> ₹1,980/q <span class="text-red-400 font-semibold bg-red-950/40 px-1 rounded">▼ -1.4%</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. MAIN HEADER & ENTERPRISE NAVIGATION -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Brand Logo -->
+        <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('landing')">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-800 to-emerald-600 flex items-center justify-center text-white shadow-md shadow-emerald-900/20">
+            <svg class="w-7 h-7 text-mint-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-2xl tracking-tight text-slate-900">Kisan<span class="text-emerald-700">Direct</span></span>
+              <span class="badge-pill bg-emerald-100 text-emerald-800 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5">B2B Agri</span>
+            </div>
+            <p class="text-xs text-slate-500 font-medium hidden sm:block" data-i18n="brandTagline">Empowering Farmers • Eliminating Middlemen</p>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="hidden md:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/80">
+          <button onclick="switchView('landing')" data-view="landing" class="tab-btn px-3.5 py-2 text-xs font-semibold rounded-xl transition text-emerald-700 border-emerald-600 bg-emerald-50/60" data-i18n="navHome">
+            Overview
+          </button>
+          <button onclick="switchView('farmer')" data-view="farmer" class="tab-btn px-3.5 py-2 text-xs font-semibold rounded-xl transition text-slate-600 border-transparent hover:text-slate-900" data-i18n="navFarmer">
+            Farmer Portal
+          </button>
+          <button onclick="switchView('buyer')" data-view="buyer" class="tab-btn px-3.5 py-2 text-xs font-semibold rounded-xl transition text-slate-600 border-transparent hover:text-slate-900" data-i18n="navBuyer">
+            Buyer Marketplace
+          </button>
+          <button onclick="switchView('pooling')" data-view="pooling" class="tab-btn px-3.5 py-2 text-xs font-semibold rounded-xl transition text-slate-600 border-transparent hover:text-slate-900" data-i18n="navPooling">
+            Smart Pooling
+          </button>
+          <button onclick="switchView('mandi')" data-view="mandi" class="tab-btn px-3.5 py-2 text-xs font-semibold rounded-xl transition text-slate-600 border-transparent hover:text-slate-900" data-i18n="navMandi">
+            Margin Tracker
+          </button>
+          <button onclick="switchView('logistics')" data-view="logistics" class="tab-btn px-3.5 py-2 text-xs font-semibold rounded-xl transition text-slate-600 border-transparent hover:text-slate-900" data-i18n="navLogistics">
+            Cold-Chain Fleet
+          </button>
+        </nav>
+
+        <!-- Right Side Controls: Role Toggle, Language, Notifications, KYC -->
+        <div class="flex items-center gap-2.5">
+
+          <!-- Role Switcher Toggle (Farmer vs Supermarket) -->
+          <div class="hidden lg:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-semibold">
+            <button id="role-btn-farmer" onclick="setRole('farmer')" class="px-2.5 py-1.5 rounded-lg transition bg-emerald-700 text-white shadow-sm flex items-center gap-1.5">
+              <span>🚜</span> Farmer Desk
+            </button>
+            <button id="role-btn-buyer" onclick="setRole('buyer')" class="px-2.5 py-1.5 rounded-lg transition text-slate-700 hover:bg-slate-100 flex items-center gap-1.5">
+              <span>🏬</span> Supermarket Hub
+            </button>
+          </div>
+
+          <!-- Language Selector -->
+          <div class="relative">
+            <select id="lang-select" onchange="setLanguage(this.value)" class="bg-white border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl px-2.5 py-2 pr-6 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm">
+              <option value="en">English (EN)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+              <option value="mr">मराठी (Marathi)</option>
+              <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+              <option value="te">తెలుగు (Telugu)</option>
+            </select>
+            <span class="absolute right-2 top-2.5 pointer-events-none text-slate-400 text-xs">▼</span>
+          </div>
+
+          <!-- Notification Bell -->
+          <div class="relative">
+            <button id="notification-bell-btn" onclick="toggleNotifications()" class="relative p-2 rounded-xl text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200 bg-white transition shadow-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+              </svg>
+              <span class="absolute -top-1 -right-1 w-4 h-4 bg-amber-600 text-white rounded-full text-[10px] font-bold flex items-center justify-center animate-pulse">
+                3
+              </span>
+            </button>
+
+            <!-- Notifications Drawer -->
+            <div id="notifications-panel" class="hidden absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-4">
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <h4 class="font-bold text-slate-900 text-sm">Notifications & Trade Alerts</h4>
+                <span class="text-xs text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full">3 New</span>
+              </div>
+              <div class="divide-y divide-slate-100 max-h-80 overflow-y-auto mt-2 text-xs">
+                <div class="py-3 hover:bg-slate-50 transition cursor-pointer" onclick="switchView('farmer')">
+                  <div class="flex items-center justify-between text-slate-400 text-[10px]">
+                    <span class="font-semibold text-emerald-700">⚡ New Counter Offer</span>
+                    <span>10m ago</span>
+                  </div>
+                  <p class="font-semibold text-slate-800 text-xs mt-1">Reliance Retail offered ₹2,440/q for 80q Onion.</p>
+                  <p class="text-slate-500 text-[11px] mt-0.5">Click to review bid on your farmer desk.</p>
+                </div>
+                <div class="py-3 hover:bg-slate-50 transition cursor-pointer" onclick="switchView('farmer')">
+                  <div class="flex items-center justify-between text-slate-400 text-[10px]">
+                    <span class="font-semibold text-emerald-700">💰 Escrow Payout Released</span>
+                    <span>2h ago</span>
+                  </div>
+                  <p class="font-semibold text-slate-800 text-xs mt-1">₹2,40,000 credited to SBI KCC Account.</p>
+                  <p class="text-slate-500 text-[11px] mt-0.5">UTR: HDFC-99218491823 • e-Challan ready</p>
+                </div>
+                <div class="py-3 hover:bg-slate-50 transition cursor-pointer" onclick="switchView('mandi')">
+                  <div class="flex items-center justify-between text-slate-400 text-[10px]">
+                    <span class="font-semibold text-amber-600">📈 Mandi Trend Alert</span>
+                    <span>Yesterday</span>
+                  </div>
+                  <p class="font-semibold text-slate-800 text-xs mt-1">Nashik APMC benchmark rose +4.2%.</p>
+                  <p class="text-slate-500 text-[11px] mt-0.5">Recommended fair target updated to ₹2,450/q.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sound Feedback Toggle -->
+          <button id="sound-toggle-btn" onclick="toggleSound()" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold text-emerald-700 bg-white hover:bg-slate-50 transition shadow-sm" title="Toggle audio chime feedback">
+            🔊 Sound On
+          </button>
+
+          <!-- Farmer Aadhaar KYC Pill Button -->
+          <button id="navbar-kyc-pill" onclick="openKycModal()" class="badge-pill bg-emerald-100 text-emerald-800 border border-emerald-300 hover:bg-emerald-200 transition text-xs font-semibold">
+            ✓ KYC Verified
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 3. PUBLIC LANDING PAGE VIEW -->
+  <!-- ========================================================================= -->
+  <main id="view-landing" class="view-panel block">
+    
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-emerald-50/70 via-white to-slate-50 pt-12 pb-20 lg:pt-16 lg:pb-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column: Copy & Dual CTAs -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 bg-emerald-100/90 text-emerald-900 border border-emerald-300/80 px-3.5 py-1 rounded-full text-xs font-bold shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              <span data-i18n="heroBadge">0% Middlemen • 100% Direct Fair Trade</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
+              Direct From Farm to Supermarket. <span class="text-gradient-emerald">Zero Middlemen.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl font-normal leading-relaxed" data-i18n="heroSub">
+              Empowering 12,400+ Indian farmers to bypass predatory dalals, receive guaranteed fair market prices, and deliver bulk produce directly to supermarket chains, retailers, and restaurants with cold-chain tracking and instant escrow settlements.
+            </p>
+
+            <!-- Dual Action CTAs -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              <button onclick="switchView('farmer')" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/30 transition text-sm flex items-center justify-center gap-2 group">
+                <span class="text-lg">🚜</span>
+                <span data-i18n="btnListProduce">List Your Produce (For Farmers)</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+
+              <button onclick="switchView('buyer')" class="bg-white hover:bg-slate-50 text-slate-800 border-2 border-slate-200 font-bold py-3.5 px-6 rounded-2xl shadow-sm hover:border-emerald-600 transition text-sm flex items-center justify-center gap-2">
+                <span class="text-lg">🏬</span>
+                <span data-i18n="btnSourceBulk">Source Bulk Produce (For Buyers)</span>
+              </button>
+            </div>
+
+            <!-- Trust Chips -->
+            <div class="pt-4 flex flex-wrap items-center gap-3 text-xs text-slate-600">
+              <span class="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-xs font-semibold">
+                🛡️ RBI Compliant Escrow
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-xs font-semibold">
+                ❄️ Cold-Chain Fleet Network
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-xs font-semibold">
+                ⚡ Instant UPI / NEFT Settlement
+              </span>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Hero Banner with Generated Asset & Floating Badges -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-white glow-emerald">
+              <img src="assets/hero_agritech.jpg" alt="Farm Produce and Logistics" class="w-full h-80 sm:h-96 object-cover" onerror="this.src='https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=1000&q=80'">
+              
+              <!-- Floating Glass Badge 1: Quality Grade Verified -->
+              <div class="absolute top-4 left-4 glass-panel rounded-2xl p-3 shadow-lg border border-white/80 max-w-[210px]">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
+                    ✓
+                  </div>
+                  <div>
+                    <span class="block text-[11px] font-bold text-slate-900">AI Quality Grade: A</span>
+                    <span class="block text-[10px] text-emerald-700 font-medium">94.2% Caliber Purity</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Glass Badge 2: Middleman Elimination -->
+              <div class="absolute bottom-4 right-4 glass-panel rounded-2xl p-3 shadow-lg border border-white/80">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-sm">
+                    0%
+                  </div>
+                  <div>
+                    <span class="block text-[11px] font-bold text-slate-900">Middleman Dalal Cut</span>
+                    <span class="block text-[10px] text-slate-500 font-semibold">+35% Farmer Net Realization</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Metrics Banner -->
+    <section class="bg-emerald-900 text-white py-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            <span class="block text-3xl sm:text-4xl font-extrabold text-mint-accent tracking-tight">12,400+</span>
+            <span class="text-xs sm:text-sm font-semibold text-emerald-200 mt-1 block" data-i18n="statFarmers">Farmers Enrolled</span>
+            <span class="text-[11px] text-emerald-300/70 mt-0.5 block">Across 8 Indian States</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            <span class="block text-3xl sm:text-4xl font-extrabold text-mint-accent tracking-tight">₹4.8 Cr+</span>
+            <span class="text-xs sm:text-sm font-semibold text-emerald-200 mt-1 block" data-i18n="statPayouts">Direct Escrow Payouts</span>
+            <span class="text-[11px] text-emerald-300/70 mt-0.5 block">Settled in under 24 hours</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            <span class="block text-3xl sm:text-4xl font-extrabold text-amber-300 tracking-tight">35%</span>
+            <span class="text-xs sm:text-sm font-semibold text-emerald-200 mt-1 block" data-i18n="statHike">Average Income Hike</span>
+            <span class="text-[11px] text-emerald-300/70 mt-0.5 block">Compared to APMC Mandi sales</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            <span class="block text-3xl sm:text-4xl font-extrabold text-mint-accent tracking-tight">180+</span>
+            <span class="text-xs sm:text-sm font-semibold text-emerald-200 mt-1 block" data-i18n="statBuyers">Supermarket Chains</span>
+            <span class="text-[11px] text-emerald-300/70 mt-0.5 block">Reliance, BigBasket, DMart & Kiranas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Price Comparison Matrix (Middleman Elimination Calculator) -->
+    <section class="py-16 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="badge-pill badge-emerald text-xs mb-2">Fair Market Economics</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="calcTitle">
+            Interactive Price Comparison Matrix
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2 font-normal" data-i18n="calcSub">
+            See how traditional middlemen pocket up to 45% margins while KisanDirect puts that money directly back into farmers' pockets.
+          </p>
+        </div>
+
+        <!-- Calculator Interactive Controls Card -->
+        <div class="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm max-w-5xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center pb-8 border-b border-slate-200">
+            <div>
+              <label for="calc-crop-select" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2" data-i18n="selectCrop">
+                Select Commodity:
+              </label>
+              <select id="calc-crop-select" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 shadow-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="onion">🧅 Nashik Red Onion</option>
+                <option value="potato">🥔 Agra Kufri Potato</option>
+                <option value="tomato">🍅 Kolar Hybrid Tomato</option>
+                <option value="wheat">🌾 Sehore Sharbati Wheat</option>
+                <option value="apple">🍎 Shimla Royal Delicious Apple</option>
+              </select>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label for="calc-volume-slider" class="text-xs font-bold uppercase tracking-wider text-slate-700" data-i18n="volumeLabel">
+                  Batch Volume:
+                </label>
+                <span id="calc-volume-display" class="font-extrabold text-emerald-800 text-sm">100 Quintals (10.0 Tons)</span>
+              </div>
+              <input type="range" id="calc-volume-slider" min="10" max="500" step="10" value="100" class="w-full h-2.5 bg-slate-200 rounded-lg cursor-pointer accent-emerald-700">
+              <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+                <span>10 q (1 Ton)</span>
+                <span>250 q (25 Tons)</span>
+                <span>500 q (50 Tons)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparison Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            
+            <!-- Traditional Mandi System (With Dalals) -->
+            <div class="bg-red-50/60 rounded-2xl border-2 border-red-200 p-6 relative">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-red-900 text-base" data-i18n="traditionalTitle">
+                  Traditional Mandi System (With Dalals)
+                </h3>
+                <span class="badge-pill bg-red-100 text-red-800 text-xs font-bold">45% Exploitation</span>
+              </div>
+
+              <ul class="space-y-3 text-xs">
+                <li class="flex justify-between text-slate-600">
+                  <span data-i18n="farmerCut">Farmer Received:</span>
+                  <span id="calc-mandi-farmer" class="font-bold text-red-700">₹12/kg (Total: ₹1,20,000)</span>
+                </li>
+                <li class="flex justify-between text-slate-600">
+                  <span data-i18n="buyerPaid">Supermarket Paid:</span>
+                  <span id="calc-mandi-buyer" class="font-bold text-slate-900">₹35/kg (Total: ₹3,50,000)</span>
+                </li>
+                <li class="flex justify-between text-slate-600">
+                  <span>Mandi Cess & Unofficial Deductions:</span>
+                  <span class="font-semibold text-slate-700">8% to 12% cuts</span>
+                </li>
+                <li class="flex justify-between text-slate-600">
+                  <span>Payment Settlement Delay:</span>
+                  <span class="font-semibold text-red-800">45 - 60 Days Credit Risk</span>
+                </li>
+                <li class="pt-3 border-t border-red-200 flex justify-between text-sm font-extrabold text-red-900">
+                  <span data-i18n="middlemanCut">Middleman (Dalal) Pocketed:</span>
+                  <span id="calc-mandi-dalal-cut">₹23/kg (Total: ₹2,30,000)</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- KisanDirect Direct Model -->
+            <div class="bg-emerald-50/80 rounded-2xl border-2 border-emerald-500 p-6 relative shadow-md">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-emerald-950 text-base flex items-center gap-1.5" data-i18n="kisanDirectTitle">
+                  <span>✓</span> KisanDirect Direct Model
+                </h3>
+                <span class="badge-pill bg-emerald-600 text-white text-xs font-bold">0% Middleman</span>
+              </div>
+
+              <ul class="space-y-3 text-xs">
+                <li class="flex justify-between text-slate-700">
+                  <span data-i18n="farmerCut">Farmer Received:</span>
+                  <span id="calc-kd-farmer" class="font-bold text-emerald-800 text-sm">₹24/kg (Total: ₹2,40,000)</span>
+                </li>
+                <li class="flex justify-between text-slate-700">
+                  <span data-i18n="buyerPaid">Supermarket Paid:</span>
+                  <span id="calc-kd-buyer" class="font-bold text-slate-900">₹26/kg (Total: ₹2,60,000)</span>
+                </li>
+                <li class="flex justify-between text-slate-700">
+                  <span>Platform & Logistics Coordination:</span>
+                  <span class="font-semibold text-emerald-800">Transparent 1.5%</span>
+                </li>
+                <li class="flex justify-between text-slate-700">
+                  <span>Payment Settlement:</span>
+                  <span class="font-bold text-emerald-700">Instant UPI/NEFT via Escrow</span>
+                </li>
+                <li class="pt-3 border-t border-emerald-300 flex justify-between text-sm font-extrabold text-emerald-950">
+                  <span data-i18n="middlemanCut">Middleman (Dalal) Cut:</span>
+                  <span id="calc-kd-dalal-cut" class="text-emerald-800">₹0 (Eliminated)</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Bottom Highlight Box: The Win-Win Margin Delta -->
+          <div class="mt-8 bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-2xl p-6 text-white grid grid-cols-1 sm:grid-cols-2 gap-4 items-center text-center sm:text-left shadow-lg">
+            <div>
+              <span class="text-xs uppercase tracking-wider text-emerald-200 font-bold block" data-i18n="directGain">Farmer Extra Realization:</span>
+              <span id="calc-extra-farmer-gain" class="text-2xl sm:text-3xl font-extrabold text-mint-accent block mt-1">+₹1,20,000 (+100% Hike)</span>
+              <p class="text-xs text-emerald-200/80 mt-1">Directly into farmer's Kisan Credit Card / Bank account.</p>
+            </div>
+            <div>
+              <span class="text-xs uppercase tracking-wider text-emerald-200 font-bold block" data-i18n="buyerSavings">Supermarket Savings:</span>
+              <span id="calc-buyer-savings" class="text-2xl sm:text-3xl font-extrabold text-amber-300 block mt-1">Save ₹90,000 (26% Cheaper)</span>
+              <p class="text-xs text-emerald-200/80 mt-1">Lower procurement cost with cold-chain farmgate pickup.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Live Mandi / APMC Benchmark Price Index -->
+    <section class="py-16 bg-slate-50 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="badge-pill badge-emerald text-xs mb-1.5">Government Agmarknet & APMC Feed</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Live Mandi Benchmark vs. KisanDirect Fair Target Index
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Government regulated APMC benchmark mandi rates compared against KisanDirect fair farmgate price targets.
+            </p>
+          </div>
+          <button onclick="switchView('mandi')" class="text-xs font-bold text-emerald-800 bg-white border border-slate-300 hover:border-emerald-600 px-4 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5 self-start sm:self-auto">
+            <span>📊 Open Full Margin Simulator</span>
+            <span>→</span>
+          </button>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 text-[11px] font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                  <th class="py-3.5 px-5">Crop & Variety</th>
+                  <th class="py-3.5 px-5">APMC Mandi Hub</th>
+                  <th class="py-3.5 px-5">Govt Mandi Rate</th>
+                  <th class="py-3.5 px-5">KisanDirect Fair Target</th>
+                  <th class="py-3.5 px-5">Farmer Net Delta</th>
+                  <th class="py-3.5 px-5">24h APMC Trend</th>
+                  <th class="py-3.5 px-5 text-right">Instant Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-xs">
+                <tr class="hover:bg-slate-50/70 transition">
+                  <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span>🧅</span> Nashik Red Onion (Grade A)
+                  </td>
+                  <td class="py-3.5 px-5 text-slate-600 font-medium">Lasalgaon APMC, MH</td>
+                  <td class="py-3.5 px-5 text-slate-500 font-semibold line-through">₹1,750 / q</td>
+                  <td class="py-3.5 px-5 font-extrabold text-emerald-800 text-sm">₹2,450 / q</td>
+                  <td class="py-3.5 px-5 font-bold text-emerald-700 bg-emerald-50/50">+₹700/q (+40%)</td>
+                  <td class="py-3.5 px-5"><span class="badge-pill bg-emerald-100 text-emerald-800 text-[11px]">▲ +4.2%</span></td>
+                  <td class="py-3.5 px-5 text-right">
+                    <button onclick="switchView('farmer')" class="bg-emerald-800 hover:bg-emerald-900 text-white font-semibold px-3 py-1.5 rounded-lg text-xs transition">Sell Direct</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/70 transition">
+                  <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span>🥔</span> Agra Kufri Potato (Jyoti)
+                  </td>
+                  <td class="py-3.5 px-5 text-slate-600 font-medium">Agra Mandi, UP</td>
+                  <td class="py-3.5 px-5 text-slate-500 font-semibold line-through">₹1,180 / q</td>
+                  <td class="py-3.5 px-5 font-extrabold text-emerald-800 text-sm">₹1,680 / q</td>
+                  <td class="py-3.5 px-5 font-bold text-emerald-700 bg-emerald-50/50">+₹500/q (+42%)</td>
+                  <td class="py-3.5 px-5"><span class="badge-pill bg-emerald-100 text-emerald-800 text-[11px]">▲ +2.1%</span></td>
+                  <td class="py-3.5 px-5 text-right">
+                    <button onclick="switchView('farmer')" class="bg-emerald-800 hover:bg-emerald-900 text-white font-semibold px-3 py-1.5 rounded-lg text-xs transition">Sell Direct</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/70 transition">
+                  <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span>🍅</span> Kolar Hybrid Tomato
+                  </td>
+                  <td class="py-3.5 px-5 text-slate-600 font-medium">Kolar APMC Yard, KA</td>
+                  <td class="py-3.5 px-5 text-slate-500 font-semibold line-through">₹1,350 / q</td>
+                  <td class="py-3.5 px-5 font-extrabold text-emerald-800 text-sm">₹1,980 / q</td>
+                  <td class="py-3.5 px-5 font-bold text-emerald-700 bg-emerald-50/50">+₹630/q (+46%)</td>
+                  <td class="py-3.5 px-5"><span class="badge-pill bg-red-100 text-red-800 text-[11px]">▼ -1.4%</span></td>
+                  <td class="py-3.5 px-5 text-right">
+                    <button onclick="switchView('farmer')" class="bg-emerald-800 hover:bg-emerald-900 text-white font-semibold px-3 py-1.5 rounded-lg text-xs transition">Sell Direct</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/70 transition">
+                  <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span>🌾</span> Sehore Sharbati Wheat
+                  </td>
+                  <td class="py-3.5 px-5 text-slate-600 font-medium">Sehore Mandi, MP</td>
+                  <td class="py-3.5 px-5 text-slate-500 font-semibold line-through">₹2,450 / q</td>
+                  <td class="py-3.5 px-5 font-extrabold text-emerald-800 text-sm">₹3,150 / q</td>
+                  <td class="py-3.5 px-5 font-bold text-emerald-700 bg-emerald-50/50">+₹700/q (+28%)</td>
+                  <td class="py-3.5 px-5"><span class="badge-pill bg-emerald-100 text-emerald-800 text-[11px]">▲ +3.5%</span></td>
+                  <td class="py-3.5 px-5 text-right">
+                    <button onclick="switchView('farmer')" class="bg-emerald-800 hover:bg-emerald-900 text-white font-semibold px-3 py-1.5 rounded-lg text-xs transition">Sell Direct</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works: The 4-Stage Middleman-Free Flow -->
+    <section class="py-16 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="badge-pill badge-emerald text-xs mb-2">Transparent Logistics</span>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">How KisanDirect Eliminates Middlemen</h2>
+          <p class="text-sm text-slate-600 mt-2">A four-stage enterprise pipeline connecting farm gates directly to supermarket distribution hubs.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 relative">
+            <span class="w-8 h-8 rounded-full bg-emerald-800 text-white font-bold text-xs flex items-center justify-center mb-4">1</span>
+            <h3 class="font-bold text-slate-900 text-base mb-1">List with AI Quality Grade</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Farmer lists produce. KisanAI scans image for moisture, size uniformity, and issues an instant verified grading badge.</p>
+          </div>
+
+          <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 relative">
+            <span class="w-8 h-8 rounded-full bg-emerald-800 text-white font-bold text-xs flex items-center justify-center mb-4">2</span>
+            <h3 class="font-bold text-slate-900 text-base mb-1">Supermarket Bid & Escrow</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Verified supermarkets place bulk bids. On acceptance, 100% of purchase funds are locked securely in an RBI-compliant escrow account.</p>
+          </div>
+
+          <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 relative">
+            <span class="w-8 h-8 rounded-full bg-emerald-800 text-white font-bold text-xs flex items-center justify-center mb-4">3</span>
+            <h3 class="font-bold text-slate-900 text-base mb-1">Cold-Chain Reefer Pickup</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">A temperature-monitored refrigerated truck arrives at the farm gate. Produce is loaded with digital weight slips and live GPS tracking.</p>
+          </div>
+
+          <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 relative">
+            <span class="w-8 h-8 rounded-full bg-emerald-800 text-white font-bold text-xs flex items-center justify-center mb-4">4</span>
+            <h3 class="font-bold text-slate-900 text-base mb-1">Instant Bank Settlement</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Produce arrives at the supermarket distribution hub. Escrow is released immediately via UPI/NEFT into the farmer's bank account with 0% dalal cut.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials & Trust Signals -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="badge-pill badge-emerald text-xs mb-2">Voices from the Ground</span>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Trusted by Farmers & Retailers</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-start gap-4">
+            <img src="assets/farmer_portrait.jpg" alt="Rameshwar Patil" class="w-16 h-16 rounded-2xl object-cover shrink-0 border border-emerald-400">
+            <div>
+              <div class="flex items-center gap-1 text-amber-500 text-xs mb-1">★★★★★</div>
+              <p class="text-xs text-slate-700 italic leading-relaxed">
+                "Earlier the dalal gave me ₹12/kg for my Nashik Red Onions and took 60 days to pay. With KisanDirect, BigBasket bought my 15-ton harvest at ₹24.5/kg and payment arrived in my SBI account the same evening!"
+              </p>
+              <span class="block font-bold text-slate-900 text-xs mt-3">Rameshwar Patil</span>
+              <span class="text-[11px] text-slate-500">Onion Farmer (8 Acres), Sinnar, Nashik (MH)</span>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-start gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-800 text-white flex items-center justify-center font-extrabold text-xl shrink-0">
+              FM
+            </div>
+            <div>
+              <div class="flex items-center gap-1 text-amber-500 text-xs mb-1">★★★★★</div>
+              <p class="text-xs text-slate-700 italic leading-relaxed">
+                "We procure 40 tons of farm produce daily. KisanDirect eliminated 3 layers of middlemen, lowered our procurement cost by 22%, and gives us 100% farm traceability with digital soil health passports."
+              </p>
+              <span class="block font-bold text-slate-900 text-xs mt-3">Priya Sharma</span>
+              <span class="text-[11px] text-slate-500">VP Procurement, FreshMart Supermarket Chain</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 4. FARMER PORTAL & DASHBOARD VIEW -->
+  <!-- ========================================================================= -->
+  <section id="view-farmer" class="view-panel hidden py-10 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <!-- Farmer Header Card with KYC Status -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <img src="assets/farmer_portrait.jpg" alt="Farmer Profile" class="w-16 h-16 rounded-2xl object-cover border-2 border-emerald-500 shadow-sm">
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="text-2xl font-extrabold text-slate-900">Rameshwar Patil</h2>
+              <span class="badge-pill bg-emerald-100 text-emerald-800 text-xs font-semibold">✓ Verified Aadhaar & KCC</span>
+            </div>
+            <p class="text-xs text-slate-500 font-medium mt-0.5">
+              Sinnar, Nashik (Maharashtra) • Land Record: Gat No. 142/A (8.5 Acres)
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="openKycModal()" class="text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition">
+            View KYC Credentials
+          </button>
+          <a href="#produce-listing-section" class="text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 px-4 py-2 rounded-xl transition shadow-sm">
+            + New Produce Listing
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick KPI Cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-semibold text-slate-500 block">Active Farm Lots</span>
+          <span class="text-2xl font-extrabold text-slate-900 mt-1 block">3 Batches</span>
+          <span class="text-[11px] text-emerald-700 font-medium">180 Quintals live</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-semibold text-slate-500 block">Pending Buyer Offers</span>
+          <span id="bids-counter-badge" class="text-2xl font-extrabold text-amber-600 mt-1 block">4 Active Offers</span>
+          <span class="text-[11px] text-slate-400">Institutional retail buyers</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-semibold text-slate-500 block">Funds Held in Escrow</span>
+          <span id="escrow-locked-total" class="text-2xl font-extrabold text-emerald-800 mt-1 block">₹2,43,200</span>
+          <span class="text-[11px] text-slate-400">Guaranteed RBI escrow lock</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-semibold text-slate-500 block">Total Withdrawn Payouts</span>
+          <span id="escrow-settled-total" class="text-2xl font-extrabold text-slate-900 mt-1 block">₹14,20,000</span>
+          <span class="text-[11px] text-emerald-700 font-medium">Direct to SBI Bank / UPI</span>
+        </div>
+      </div>
+
+      <!-- Quick Produce Listing Flow with AI Fair-Price & AI Quality Scanner -->
+      <div id="produce-listing-section" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center justify-between pb-6 border-b border-slate-200">
+          <div>
+            <span class="badge-pill badge-emerald text-xs mb-1">Instant Farmgate Commerce</span>
+            <h3 class="text-xl font-extrabold text-slate-900">List Your Produce for Supermarket Bidding</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Fill produce details, run the computer-vision quality test, and receive instant direct bids.</p>
+          </div>
+        </div>
+
+        <form id="produce-listing-form" class="mt-6 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Commodity Selection -->
+            <div>
+              <label for="list-crop-name" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Commodity & Variety</label>
+              <select id="list-crop-name" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="Nashik Red Onion">🧅 Nashik Red Onion</option>
+                <option value="Agra Kufri Jyoti Potato">🥔 Agra Kufri Jyoti Potato</option>
+                <option value="Kolar Hybrid Tomato">🍅 Kolar Hybrid Tomato</option>
+                <option value="Sehore Sharbati Wheat">🌾 Sehore Sharbati Wheat</option>
+                <option value="Shimla Royal Delicious Apple">🍎 Shimla Royal Delicious Apple</option>
+              </select>
+            </div>
+
+            <!-- Quantity in Quintals -->
+            <div>
+              <label for="list-quantity" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Available Quantity (Quintals)</label>
+              <input type="number" id="list-quantity" placeholder="e.g. 150" min="1" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <span class="text-[11px] text-slate-400 mt-0.5 block">10 Quintals = 1 Metric Ton</span>
+            </div>
+
+            <!-- Minimum Order Quantity (MOQ) -->
+            <div>
+              <label for="list-moq" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Minimum Order Quantity (MOQ)</label>
+              <input type="number" id="list-moq" placeholder="e.g. 20" min="1" value="20" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+
+            <!-- Harvest Date -->
+            <div>
+              <label for="list-harvest-date" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Harvest Date</label>
+              <input type="date" id="list-harvest-date" value="2026-10-04" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+
+            <!-- Expected Shelf Life -->
+            <div>
+              <label for="list-shelf-life" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Expected Shelf Life (Days)</label>
+              <input type="number" id="list-shelf-life" value="45" min="1" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+
+            <!-- Grade -->
+            <div>
+              <label for="list-grade" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Self-Declared Grade</label>
+              <select id="list-grade" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="Grade A">Grade A (Premium / Export / Retail)</option>
+                <option value="Grade B">Grade B (Standard Commercial)</option>
+                <option value="Grade C">Grade C (Processing / Puree / Mash)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Target Price per Quintal + AI Fair-Price Suggestion Widget -->
+          <div class="bg-emerald-50/70 rounded-2xl p-5 border border-emerald-200">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+              <div class="lg:col-span-5">
+                <label for="list-target-price" class="block text-xs font-bold uppercase text-emerald-950 mb-1">Target Price (₹ per Quintal)</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2.5 text-slate-400 text-sm font-bold">₹</span>
+                  <input type="number" id="list-target-price" placeholder="e.g. 2450" required class="w-full bg-white border border-emerald-300 rounded-xl pl-8 pr-3 py-2 text-sm font-extrabold text-emerald-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                </div>
+              </div>
+
+              <!-- AI Suggestion Bubble -->
+              <div class="lg:col-span-7 bg-white rounded-xl p-3.5 border border-emerald-200 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-800">
+                    <span>✨ KisanAI Fair-Price Suggestion:</span>
+                    <span id="ai-price-recommendation" class="font-extrabold text-sm text-emerald-900">₹2,380 - ₹2,520 / q</span>
+                  </div>
+                  <p id="ai-demand-signal" class="text-[11px] text-slate-500 mt-0.5">Regional Signals: High (Festive + Export) • Nashik Rain Alert (+3.4% premium)</p>
+                </div>
+                <button type="button" onclick="applyAiPrice()" class="text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 px-3 py-1.5 rounded-lg transition shrink-0 shadow-xs">
+                  Apply Fair Price
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Computer Vision Scanner Preview -->
+          <div class="bg-slate-900 text-white rounded-2xl p-6 relative overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div class="md:col-span-5 relative">
+                <div id="scanner-preview" class="relative w-full h-44 rounded-xl overflow-hidden bg-slate-800 border-2 border-emerald-500/40 flex items-center justify-center">
+                  <img src="assets/hero_agritech.jpg" alt="Produce Sample" class="w-full h-full object-cover">
+                  <!-- Laser Line Scanner -->
+                  <div id="scan-laser" class="scanner-line hidden"></div>
+                </div>
+              </div>
+
+              <div class="md:col-span-7 space-y-3">
+                <div class="flex items-center gap-2">
+                  <span class="badge-pill bg-emerald-500/20 text-emerald-400 border border-emerald-400/30 text-xs">KisanAI Computer Vision</span>
+                  <span class="text-xs text-slate-400">Automated Produce Purity Check</span>
+                </div>
+                <h4 class="font-bold text-base text-white">Simulate Automated Quality Grading</h4>
+                <p id="scan-status-text" class="text-xs text-slate-300 leading-relaxed">
+                  Run computer-vision scan to analyze skin texture, caliber uniformity, and moisture content before listing.
+                </p>
+
+                <div class="flex items-center gap-3 pt-1">
+                  <button type="button" onclick="simulateAiScan()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-xl text-xs transition shadow-md flex items-center gap-1.5">
+                    <span>📷 Run AI Quality Scan</span>
+                  </button>
+                  <div id="scan-result-badge" class="hidden">
+                    <span class="badge-pill bg-emerald-400/20 text-emerald-300 border border-emerald-400 text-xs font-bold">
+                      ✓ Grade A: 94.2% Purity Score
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-end pt-2">
+            <button type="submit" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3.5 px-8 rounded-2xl shadow-lg shadow-emerald-900/20 transition text-sm flex items-center gap-2">
+              <span>🚀 Publish Listing to Marketplace</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Active Orders & Bids Board (Negotiation Desk) -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center justify-between pb-6 border-b border-slate-200">
+          <div>
+            <span class="badge-pill badge-amber text-xs mb-1">Direct Negotiations</span>
+            <h3 class="text-xl font-extrabold text-slate-900" data-i18n="activeBidsTitle">Active Supermarket Bids Desk</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Verified bulk buyers competing for your harvest. Accept to immediately lock funds in escrow.</p>
+          </div>
+        </div>
+
+        <div id="bids-board-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          <!-- Populated by JavaScript renderBidsBoard() -->
+        </div>
+      </div>
+
+      <!-- Instant Escrow & Payout Status Dashboard -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center justify-between pb-6 border-b border-slate-200">
+          <div>
+            <span class="badge-pill badge-emerald text-xs mb-1">Escrow Security</span>
+            <h3 class="text-xl font-extrabold text-slate-900" data-i18n="escrowTrackerTitle">Instant Escrow & Payout Pipeline</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Funds are protected in an RBI escrow account until cold-chain delivery is verified at the warehouse.</p>
+          </div>
+        </div>
+
+        <!-- 4-Stage Visual Escrow Pipeline -->
+        <div class="my-8 relative">
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-center">
+              <span class="text-2xl block mb-1">🔒</span>
+              <span class="font-bold text-slate-900 text-xs block">1. Escrow Locked</span>
+              <span class="text-[11px] text-slate-500 mt-0.5 block">Buyer deposits 100% funds</span>
+            </div>
+            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-center">
+              <span class="text-2xl block mb-1">🚛</span>
+              <span class="font-bold text-slate-900 text-xs block">2. Farmgate Pickup</span>
+              <span class="text-[11px] text-slate-500 mt-0.5 block">Reefer truck loaded & tracked</span>
+            </div>
+            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-center">
+              <span class="text-2xl block mb-1">🔍</span>
+              <span class="font-bold text-slate-900 text-xs block">3. Hub Inspection</span>
+              <span class="text-[11px] text-slate-500 mt-0.5 block">Quality verified at warehouse</span>
+            </div>
+            <div class="bg-emerald-800 text-white p-4 rounded-2xl border border-emerald-900 text-center shadow-md">
+              <span class="text-2xl block mb-1">💸</span>
+              <span class="font-bold text-white text-xs block">4. Instant Payout</span>
+              <span class="text-[11px] text-emerald-200 mt-0.5 block">Same-day UPI/NEFT transfer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Escrow Ledger Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                <th class="py-3 px-4">Escrow ID</th>
+                <th class="py-3 px-4">Crop Batch</th>
+                <th class="py-3 px-4">Supermarket Buyer</th>
+                <th class="py-3 px-4">Amount</th>
+                <th class="py-3 px-4">Escrow Status</th>
+                <th class="py-3 px-4">UTR / Lock ID</th>
+                <th class="py-3 px-4 text-right">e-Challan</th>
+              </tr>
+            </thead>
+            <tbody id="escrow-transactions-body" class="text-xs">
+              <!-- Populated by JavaScript renderEscrowDashboard() -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Farmer's Active Listings Table -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center justify-between pb-6 border-b border-slate-200">
+          <div>
+            <h3 class="text-xl font-extrabold text-slate-900">Your Active Marketplace Listings</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Produce currently visible to retail and institutional buyers across India.</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto mt-4">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                <th class="py-3 px-4">Produce Details</th>
+                <th class="py-3 px-4">Available Qty</th>
+                <th class="py-3 px-4">Target Rate</th>
+                <th class="py-3 px-4">Grade</th>
+                <th class="py-3 px-4">Harvest Date</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4 text-right">Traceability</th>
+              </tr>
+            </thead>
+            <tbody id="farmer-listings-body" class="text-xs">
+              <!-- Populated by renderFarmerListingsTable() -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. SUPERMARKET & BUYER PROCUREMENT MARKETPLACE -->
+  <!-- ========================================================================= -->
+  <section id="view-buyer" class="view-panel hidden py-10 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <!-- Buyer Marketplace Header Banner -->
+      <div class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <span class="badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-xs mb-2">Direct Supermarket Sourcing</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Farm-Direct Procurement Marketplace</h2>
+          <p class="text-xs sm:text-sm text-emerald-200/80 mt-1 max-w-xl">
+            Source high-grade produce straight from verified Indian farmers. Guaranteed farm traceability, refrigerated reefer dispatch, and 0% dalal inflation.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3 bg-white/10 p-3 rounded-2xl border border-white/15 backdrop-blur-md">
+          <div class="text-right">
+            <span class="text-[11px] text-emerald-300 block font-semibold">Cold-Chain Pickup</span>
+            <span class="text-xs font-bold text-white">4.2h Farm-to-Hub Avg</span>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/30 flex items-center justify-center text-lg">
+            ❄️
+          </div>
+        </div>
+      </div>
+
+      <!-- Filterable Catalog Search Bar & Controls -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+          
+          <!-- Search Input -->
+          <div class="sm:col-span-5 relative">
+            <span class="absolute left-3.5 top-3 text-slate-400">🔍</span>
+            <input type="text" id="market-search-input" placeholder="Search by crop, farmer name, or location (e.g. Nashik, Potato)..." class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-xs font-medium text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+
+          <!-- Radius Filter -->
+          <div class="sm:col-span-3">
+            <select id="market-radius-filter" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <option value="all">📍 Radius: All India</option>
+              <option value="50">Within 50 km (Local Cluster)</option>
+              <option value="100">Within 100 km (Regional DC)</option>
+              <option value="250">Within 250 km (State Corridor)</option>
+            </select>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="sm:col-span-2">
+            <select id="market-category-filter" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <option value="all">All Categories</option>
+              <option value="Vegetables">Vegetables</option>
+              <option value="Fruits">Fruits</option>
+              <option value="Grains & Pulses">Grains & Pulses</option>
+            </select>
+          </div>
+
+          <!-- Count Display -->
+          <div class="sm:col-span-2 text-right">
+            <span id="market-results-count" class="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-2 rounded-xl inline-block">
+              Showing 6 Direct Lots
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Marketplace Cards Grid -->
+      <div id="marketplace-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated by JavaScript renderMarketplaceCards() -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. SMART CONTRACT POOLING (COLLECTIVE BARGAINING HUB) -->
+  <!-- ========================================================================= -->
+  <section id="view-pooling" class="view-panel hidden py-10 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="bg-gradient-to-r from-purple-950 via-slate-900 to-emerald-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+        <span class="badge-pill bg-purple-500/20 text-purple-300 border border-purple-400/30 text-xs mb-2">Smallholder Collective Power</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Smart Contract Pooling (Collective Bargaining)</h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+          Smallholder farmers with 1-2 acres often get rejected by supermarket chains who require 10-20 ton tenders. 
+          KisanDirect Smart Pooling lets smallholders unite their harvests into single high-grade bulk lots, locking in institutional prices.
+        </p>
+      </div>
+
+      <!-- Active Collective Pools -->
+      <div id="pooling-rooms-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Populated by renderPoolingRooms() -->
+      </div>
+
+      <!-- How Collective Pooling Protects Small Farmers -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-4">How Smart Pooling Works for Smallholders</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-600">
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <span class="font-bold text-emerald-800 text-sm block mb-1">1. Institutional Tender Posted</span>
+            Supermarkets post large recurring supply requirements (e.g. 100 Quintals weekly for Metro Cash & Carry) at premium bulk pricing.
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <span class="font-bold text-emerald-800 text-sm block mb-1">2. Farmers Pledge Quotas</span>
+            Local smallholders pledge their 10q, 15q, or 20q batches into the pool. Quality grading ensures all pledged produce meets Grade A standards.
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <span class="font-bold text-emerald-800 text-sm block mb-1">3. Unified Reefer Haul</span>
+            Once 100% pledged, a single heavy reefer truck performs synchronized farmgate pickups, reducing freight cost by 40% and releasing individual escrow payouts.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. MANDI PRICE TRACKER & PROFIT SIMULATOR (COMPETITIVE EDGE) -->
+  <!-- ========================================================================= -->
+  <section id="view-mandi" class="view-panel hidden py-10 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="badge-pill badge-emerald text-xs mb-2">APMC Margin Analyzer</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Mandi Price Tracker & Profit Simulator</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          Detailed forensic comparison between hidden APMC mandi deductions and KisanDirect direct contracts.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+          <div>
+            <label for="chart-crop-select" class="block text-xs font-bold uppercase text-slate-700 mb-1">Select Crop for Analysis</label>
+            <select id="chart-crop-select" onchange="renderMandiMarginChart()" class="bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <option value="onion">🧅 Nashik Red Onion</option>
+              <option value="potato">🥔 Agra Kufri Potato</option>
+              <option value="tomato">🍅 Kolar Hybrid Tomato</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-4 text-xs">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-md bg-red-500"></span>
+              <span class="font-semibold text-slate-700">Mandi Net Realization (After Cuts)</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-md bg-emerald-800"></span>
+              <span class="font-semibold text-slate-700">KisanDirect Direct Payout</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Container -->
+        <div class="h-72 w-full relative">
+          <canvas id="mandi-comparison-chart"></canvas>
+        </div>
+
+        <!-- Breakdown Details Table -->
+        <div class="mt-8 border-t border-slate-200 pt-6">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">Itemized Mandi Deductions Breakdown</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs">
+            <div class="bg-red-50 p-3.5 rounded-xl border border-red-200">
+              <span class="text-slate-500 block text-[11px]">Dalal Commission (Arhatiya)</span>
+              <span class="font-bold text-red-800 text-sm mt-0.5 block">-8% to -10% Cut</span>
+            </div>
+            <div class="bg-red-50 p-3.5 rounded-xl border border-red-200">
+              <span class="text-slate-500 block text-[11px]">Weighing & Unloading "Dala"</span>
+              <span class="font-bold text-red-800 text-sm mt-0.5 block">-4% to -6% Loss</span>
+            </div>
+            <div class="bg-red-50 p-3.5 rounded-xl border border-red-200">
+              <span class="text-slate-500 block text-[11px]">Distress Sale Deductions</span>
+              <span class="font-bold text-red-800 text-sm mt-0.5 block">-12% Underpricing</span>
+            </div>
+            <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-300">
+              <span class="text-slate-500 block text-[11px]">KisanDirect Direct Gain</span>
+              <span class="font-bold text-emerald-800 text-sm mt-0.5 block">+35% to +45% Net</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. LOGISTICS & COLD-CHAIN PARTNER HUB -->
+  <!-- ========================================================================= -->
+  <section id="view-logistics" class="view-panel hidden py-10 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <span class="badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs mb-2">Refrigerated Farmgate Transit</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Logistics & Cold-Chain Partner Hub</h2>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
+            Direct access to verified reefer truck operators with active digital temperature monitoring and 100% transit insurance.
+          </p>
+        </div>
+
+        <img src="assets/cold_chain_logistics.jpg" alt="Cold Chain Reefer Fleet" class="w-full md:w-64 h-36 object-cover rounded-2xl border-2 border-white/20 shadow-md">
+      </div>
+
+      <!-- Freight Cost Estimator Widget -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-1">Cold-Chain Route & Freight Rate Calculator</h3>
+        <p class="text-xs text-slate-500 mb-6">Calculate transparent freight costs based on distance and reefer specifications.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 items-center">
+          <div>
+            <label for="freight-distance" class="block text-xs font-bold text-slate-700 mb-1">Distance (km)</label>
+            <input type="number" id="freight-distance" value="50" min="5" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900">
+          </div>
+          <div>
+            <label for="freight-tonnage" class="block text-xs font-bold text-slate-700 mb-1">Batch Tonnage (Tons)</label>
+            <input type="number" id="freight-tonnage" value="5" min="1" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900">
+          </div>
+          <div>
+            <label for="freight-vehicle-type" class="block text-xs font-bold text-slate-700 mb-1">Vehicle Specification</label>
+            <select id="freight-vehicle-type" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900">
+              <option value="16">Reefer 14ft (₹16/km)</option>
+              <option value="22">Reefer 20ft Heavy (₹22/km)</option>
+              <option value="13">Electric Reefer 8ft (₹13/km)</option>
+            </select>
+          </div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-center">
+            <span class="text-[11px] text-slate-500 block font-semibold">Estimated Freight:</span>
+            <span id="freight-result-total" class="text-xl font-extrabold text-emerald-900 block mt-0.5">₹896</span>
+            <span id="freight-result-breakdown" class="text-[10px] text-emerald-700 block">Base: ₹800 + Cooling: ₹96</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verified Reefer Fleet Operators -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-pill badge-emerald text-xs">GPS Live Active</span>
+            <span class="text-xs font-bold text-slate-700">★ 4.9 (1,240 Trips)</span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-base">KisanGati Cold Fleet (14ft)</h4>
+          <p class="text-xs text-slate-500 mt-0.5">Nashik Regional Hub (6 km away)</p>
+
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 my-4 text-xs space-y-1">
+            <div class="flex justify-between text-slate-600">
+              <span>Capacity:</span>
+              <span class="font-bold text-slate-900">4.5 Metric Tons</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Temperature:</span>
+              <span class="font-bold text-emerald-700">0°C to 15°C (Chilled)</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Base Freight:</span>
+              <span class="font-bold text-slate-900">₹16 / km</span>
+            </div>
+          </div>
+
+          <button onclick="showToast('Transport Booked', 'KisanGati Reefer 14ft assigned for farmgate pickup.', 'success')" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-semibold py-2 px-3 rounded-xl text-xs transition">
+            Book Reefer Vehicle
+          </button>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-pill badge-emerald text-xs">GPS Live Active</span>
+            <span class="text-xs font-bold text-slate-700">★ 4.8 (890 Trips)</span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-base">FreshRoute Heavy Reefer (20ft)</h4>
+          <p class="text-xs text-slate-500 mt-0.5">Mumbai-Thane Express Corridor</p>
+
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 my-4 text-xs space-y-1">
+            <div class="flex justify-between text-slate-600">
+              <span>Capacity:</span>
+              <span class="font-bold text-slate-900">9.0 Metric Tons</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Temperature:</span>
+              <span class="font-bold text-emerald-700">-18°C to 18°C (Deep Freeze)</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Base Freight:</span>
+              <span class="font-bold text-slate-900">₹22 / km</span>
+            </div>
+          </div>
+
+          <button onclick="showToast('Transport Booked', 'FreshRoute Heavy Reefer reserved.', 'success')" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-semibold py-2 px-3 rounded-xl text-xs transition">
+            Book Reefer Vehicle
+          </button>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-pill badge-emerald text-xs">Zero Emission</span>
+            <span class="text-xs font-bold text-slate-700">★ 4.9 (450 Trips)</span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-base">GreenHaul Eco-Reefer (EV 8ft)</h4>
+          <p class="text-xs text-slate-500 mt-0.5">Pune-Chakan Urban Delivery</p>
+
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 my-4 text-xs space-y-1">
+            <div class="flex justify-between text-slate-600">
+              <span>Capacity:</span>
+              <span class="font-bold text-slate-900">2.0 Metric Tons</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Temperature:</span>
+              <span class="font-bold text-emerald-700">2°C to 12°C</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Base Freight:</span>
+              <span class="font-bold text-slate-900">₹13 / km</span>
+            </div>
+          </div>
+
+          <button onclick="showToast('Transport Booked', 'GreenHaul Eco-Reefer dispatched.', 'success')" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-semibold py-2 px-3 rounded-xl text-xs transition">
+            Book Reefer Vehicle
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-slate-900 text-white border-t border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-9 h-9 rounded-xl bg-emerald-700 flex items-center justify-center text-white font-bold">
+              🌾
+            </div>
+            <span class="font-extrabold text-xl tracking-tight text-white">Kisan<span class="text-emerald-400">Direct</span></span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Eliminating agricultural middlemen and guaranteeing transparent, escrow-secured direct commerce between Indian farmers and supermarket chains.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">Commodity Corridors</h4>
+          <ul class="text-xs space-y-2 text-slate-400">
+            <li>Nashik Onion Belt (Maharashtra)</li>
+            <li>Agra-Aligarh Potato Corridor (UP)</li>
+            <li>Kolar Tomato Cluster (Karnataka)</li>
+            <li>Malwa Wheat Belt (Madhya Pradesh)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">Enterprise Governance</h4>
+          <ul class="text-xs space-y-2 text-slate-400">
+            <li>APMC Direct Marketing Exemption Act</li>
+            <li>RBI Escrow Account Norms</li>
+            <li>Jaivik Bharat Organic Traceability</li>
+            <li>FSSAI Cold-Chain Compliance</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">KisanDirect Helpline</h4>
+          <p class="text-xs text-slate-400">Toll-Free Kisan Support:</p>
+          <span class="text-emerald-400 font-mono font-bold text-sm block mt-0.5">1800-419-KISAN (Toll-Free)</span>
+          <p class="text-xs text-slate-400 mt-2">support@kisandirect.gov.in</p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+        <p>© 2026 KisanDirect B2B Agritech Platform. Built with pride for Indian Farmers.</p>
+        <p class="mt-2 sm:mt-0">Designed for 0% Middlemen • 100% Direct Farmer Empowerment</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 10. REALISTIC MODAL DIALOGS -->
+  <!-- ========================================================================= -->
+
+  <!-- Modal 1: Transparent Sourcing Passport Modal -->
+  <div id="passport-modal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <img id="pass-farmer-avatar" src="assets/farmer_portrait.jpg" alt="Farmer" class="w-12 h-12 rounded-2xl object-cover border border-emerald-400">
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 id="pass-crop-name" class="font-extrabold text-slate-900 text-lg">Nashik Red Onion</h3>
+              <span class="passport-stamp text-xs">ORIGIN VERIFIED</span>
+            </div>
+            <p id="pass-lot-id" class="text-xs text-slate-400 font-mono">Lot ID: LOT-NSK-101</p>
+          </div>
+        </div>
+        <button onclick="closePassportModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
+      </div>
+
+      <div class="mt-6 space-y-5 text-xs">
+        <div class="grid grid-cols-2 gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <div>
+            <span class="text-slate-400 block text-[11px]">Cultivated By:</span>
+            <span id="pass-farmer-name" class="font-bold text-slate-900 text-sm">Rameshwar Patil</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[11px]">Farm Geolocation:</span>
+            <span id="pass-coords" class="font-mono text-emerald-800 font-semibold">19.8475° N, 73.9822° E</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[11px]">Location:</span>
+            <span id="pass-farm-location" class="font-medium text-slate-800">Sinnar, Nashik (Maharashtra)</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[11px]">Harvest Date & Shelf Life:</span>
+            <span class="font-medium text-slate-800"><span id="pass-harvest-date">2026-10-02</span> (<span id="pass-shelf-life">45 Days</span>)</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Soil Health Card & Water Test Summary</h4>
+          <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200 font-medium text-emerald-950">
+            <p id="pass-soil-report">pH 6.8 | N: 285 kg/ha | P: 24 kg/ha | OC: 0.74% | Residue: 0% Chemical</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Quality & Purity Inspection</h4>
+          <div class="grid grid-cols-2 gap-2 text-center">
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <span class="text-slate-400 block text-[11px]">Purity Index</span>
+              <span id="pass-purity-score" class="font-extrabold text-emerald-800 text-sm">94.2%</span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <span class="text-slate-400 block text-[11px]">Moisture Content</span>
+              <span id="pass-moisture" class="font-extrabold text-slate-800 text-sm">11.2%</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Official Certifications</h4>
+          <div id="pass-certifications" class="flex flex-wrap gap-2">
+            <!-- Badges -->
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div class="text-[11px] text-slate-400 font-mono">
+            Blockchain Traceability Hash: <br>
+            <span id="pass-qr-text" class="text-slate-600 font-bold">https://kisandirect.gov.in/verify/LOT-NSK-101</span>
+          </div>
+          <button onclick="closePassportModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2 px-5 rounded-xl text-xs">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Place Bulk Bid / Buy in Escrow Modal -->
+  <div id="bid-modal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+      <div class="flex items-start justify-between pb-4 border-b border-slate-100">
+        <div>
+          <h3 class="font-extrabold text-slate-900 text-lg">Place Bulk Procurement Bid</h3>
+          <p id="bid-lot-info" class="text-xs text-slate-500 font-medium">Nashik Red Onion (Available: 180q)</p>
+        </div>
+        <button onclick="closeBidModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
+      </div>
+
+      <form id="bulk-bid-form" class="mt-5 space-y-4 text-xs">
+        <div>
+          <label for="bid-buyer-name" class="block font-bold text-slate-700 mb-1">Supermarket / Retail Chain Name</label>
+          <input type="text" id="bid-buyer-name" value="Reliance Fresh Supermarket" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="bid-input-qty" class="block font-bold text-slate-700 mb-1">Quantity (Quintals)</label>
+            <input type="number" id="bid-input-qty" min="1" value="50" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          </div>
+          <div>
+            <label for="bid-input-price" class="block font-bold text-slate-700 mb-1">Your Bid Price (₹/Quintal)</label>
+            <input type="number" id="bid-input-price" min="100" value="2420" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          </div>
+        </div>
+
+        <p id="bid-lot-price" class="text-[11px] text-emerald-700 font-semibold">Farmer's Target Price: ₹2,450/q</p>
+
+        <!-- Escrow Breakdown Box -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-1.5 text-slate-600">
+          <div class="flex justify-between">
+            <span>Produce Subtotal:</span>
+            <span id="bid-calc-produce" class="font-bold text-slate-900">₹1,21,000</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Cold-Chain Transit Quote (Reefer):</span>
+            <span id="bid-calc-freight" class="font-semibold text-slate-800">₹720</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Platform Escrow Fee (1.5%):</span>
+            <span id="bid-calc-escrow-fee" class="font-semibold text-slate-800">₹1,815</span>
+          </div>
+          <div class="flex justify-between pt-2 border-t border-slate-200 text-sm font-extrabold text-emerald-950">
+            <span>Total Escrow Deposit:</span>
+            <span id="bid-calc-total" class="text-emerald-800 text-base">₹1,23,535</span>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-400">
+          🛡️ Funds remain locked in an RBI-regulated escrow account until temperature and quality are verified at your dock.
+        </p>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeBidModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 px-4 rounded-xl">
+            Cancel
+          </button>
+          <button type="submit" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 px-6 rounded-xl shadow-md">
+            🔒 Deposit in Escrow & Submit Bid
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Farmer Registration KYC Modal (Aadhaar / Kisan Credit Card) -->
+  <div id="kyc-modal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+      <div class="flex items-start justify-between pb-4 border-b border-slate-100">
+        <div>
+          <span class="badge-pill badge-emerald text-xs mb-1">Identity & Land Verification</span>
+          <h3 class="font-extrabold text-slate-900 text-lg">Farmer KYC Authentication</h3>
+        </div>
+        <button onclick="closeKycModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
+      </div>
+
+      <form id="farmer-kyc-form" class="mt-5 space-y-4 text-xs">
+        <div>
+          <label for="kyc-farmer-name" class="block font-bold text-slate-700 mb-1">Full Legal Name (as on Aadhaar)</label>
+          <input type="text" id="kyc-farmer-name" value="Rameshwar Patil" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="kyc-aadhaar" class="block font-bold text-slate-700 mb-1">Aadhaar Number</label>
+            <input type="text" id="kyc-aadhaar" value="XXXX-XXXX-4921" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          </div>
+          <div>
+            <label for="kyc-kcc" class="block font-bold text-slate-700 mb-1">Kisan Credit Card / PM-KISAN ID</label>
+            <input type="text" id="kyc-kcc" value="KCC-MH-2023-88219" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          </div>
+        </div>
+
+        <div>
+          <label for="kyc-land-survey" class="block font-bold text-slate-700 mb-1">Land Record Survey No. (7/12 Extract / Khatauni)</label>
+          <input type="text" id="kyc-land-survey" value="Gat No. 142/A, Sinnar, Nashik" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
+          <span class="font-bold text-emerald-900 block mb-0.5">Linked Direct Settlement Bank Account:</span>
+          <span class="text-slate-700 block">State Bank of India (Kisan Branch) • A/c: XXXXXX8912 • IFSC: SBIN0001842</span>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeKycModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-4 rounded-xl">
+            Close
+          </button>
+          <button type="submit" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2 px-6 rounded-xl shadow-md">
+            ✓ Authenticate KYC Credentials
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Digital Mandi Receipt (e-Challan / Tax Invoice) -->
+  <div id="challan-modal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      
+      <!-- e-Challan Official Header -->
+      <div class="text-center pb-4 border-b-2 border-slate-900">
+        <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-xl font-bold text-slate-800 mb-1">
+          🏛️
+        </div>
+        <h3 class="font-extrabold text-slate-900 text-base uppercase tracking-wider">
+          Government of India • APMC Exemption Direct Agricultural Commerce Portal
+        </h3>
+        <p class="text-[11px] text-slate-500">Electronic Mandi Receipt & Settlement Challan (Under Direct Farm Trade Regulation)</p>
+      </div>
+
+      <div class="mt-4 space-y-4 text-xs">
+        <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl font-mono text-[11px]">
+          <div>
+            <span class="text-slate-400 block">Challan Ref:</span>
+            <span id="challan-no" class="font-bold text-slate-900">KD-ECH-2026/4081</span>
+          </div>
+          <div class="text-right">
+            <span class="text-slate-400 block">Date of Settlement:</span>
+            <span id="challan-date" class="font-bold text-slate-900">2026-10-03</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="border border-slate-200 p-3 rounded-xl">
+            <span class="text-slate-400 uppercase tracking-wider text-[10px] font-bold block mb-1">Seller (Farmer)</span>
+            <span id="challan-farmer" class="font-bold text-slate-900 block">Rameshwar Patil</span>
+            <span class="text-slate-500 block text-[11px]">Aadhaar: XXXX-XXXX-4921</span>
+            <span class="text-slate-500 block text-[11px]">Sinnar, Nashik (Maharashtra)</span>
+          </div>
+          <div class="border border-slate-200 p-3 rounded-xl">
+            <span class="text-slate-400 uppercase tracking-wider text-[10px] font-bold block mb-1">Buyer (Supermarket)</span>
+            <span id="challan-buyer" class="font-bold text-slate-900 block">Reliance Fresh Distribution Center</span>
+            <span class="text-slate-500 block text-[11px]">GSTIN: 27AABCR8819A1Z9</span>
+            <span class="text-slate-500 block text-[11px]">Bhiwandi Central Fulfillment Hub</span>
+          </div>
+        </div>
+
+        <!-- Item Table -->
+        <table class="w-full text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead class="bg-slate-100 text-[10px] uppercase font-bold text-slate-600">
+            <tr>
+              <th class="py-2 px-3">Produce Description</th>
+              <th class="py-2 px-3">Quantity</th>
+              <th class="py-2 px-3">Agreed Rate</th>
+              <th class="py-2 px-3 text-right">Gross Total</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 font-medium">
+            <tr>
+              <td id="challan-crop" class="py-2.5 px-3">Nashik Red Onion (Lot 92)</td>
+              <td id="challan-qty" class="py-2.5 px-3">100 Quintals (10 Tons)</td>
+              <td id="challan-rate" class="py-2.5 px-3">₹2,400 / q</td>
+              <td id="challan-total" class="py-2.5 px-3 text-right font-bold text-slate-900">₹2,40,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Statutory Exemptions -->
+        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-[11px] text-emerald-950 space-y-1">
+          <p class="font-bold">✓ Statutory Exemption Declaration:</p>
+          <p>Exempted from APMC cess & dalal commission under Section 6 of Direct Agricultural Marketing Act. Transaction settled via RBI-Compliant Escrow.</p>
+          <p class="font-mono text-[10px] text-slate-500">Bank Settlement UTR: <span id="challan-utr">UTR-HDFC-99218491823</span></p>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between no-print">
+          <button onclick="closeChallanModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-4 rounded-xl">
+            Close
+          </button>
+          <button onclick="printChallan()" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2 px-5 rounded-xl shadow-md flex items-center gap-1.5">
+            🖨️ Print / Save e-Challan
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Counter-Offer Modal -->
+  <div id="counter-modal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-start justify-between pb-3 border-b border-slate-100">
+        <div>
+          <h3 class="font-bold text-slate-900 text-base">Submit Counter-Offer</h3>
+          <p id="counter-bid-crop" class="text-xs text-slate-500">Nashik Red Onion (60 Quintals)</p>
+        </div>
+        <button onclick="closeCounterModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
+      </div>
+
+      <form id="counter-offer-form" class="mt-4 space-y-4 text-xs">
+        <div>
+          <span class="text-slate-400 block text-[11px]">Buyer:</span>
+          <span id="counter-bid-buyer" class="font-bold text-slate-800 text-sm">BigBasket Wholesale</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-[11px]">Their Bid:</span>
+          <span id="counter-bid-original-price" class="font-bold text-amber-700 text-sm">₹2,420/q</span>
+        </div>
+
+        <div>
+          <label for="counter-proposed-price" class="block font-bold text-slate-700 mb-1">Your Counter Price (₹ per Quintal)</label>
+          <input type="number" id="counter-proposed-price" value="2450" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeCounterModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-3 rounded-xl">
+            Cancel
+          </button>
+          <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-5 rounded-xl shadow-md">
+            Send Counter-Offer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 6: Join Collective Bargaining Pool Modal -->
+  <div id="pool-join-modal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-start justify-between pb-3 border-b border-slate-100">
+        <div>
+          <h3 id="pool-modal-title" class="font-bold text-slate-900 text-base">Join Collective Pool</h3>
+          <p id="pool-modal-needed" class="text-xs text-slate-500">Remaining: 22 Quintals</p>
+        </div>
+        <button onclick="closeJoinPoolModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
+      </div>
+
+      <form id="pool-pledge-form" class="mt-4 space-y-4 text-xs">
+        <p id="pool-modal-rate" class="text-xs font-bold text-emerald-800 bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+          Guaranteed Rate: ₹2,500/q
+        </p>
+
+        <div>
+          <label for="pool-pledge-qty" class="block font-bold text-slate-700 mb-1">Your Pledged Quantity (Quintals)</label>
+          <input type="number" id="pool-pledge-qty" value="10" min="1" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <span class="text-[11px] text-slate-400 mt-1 block">Your harvest will be pooled with local farmers for single bulk tender haulage.</span>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeJoinPoolModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-3 rounded-xl">
+            Cancel
+          </button>
+          <button type="submit" class="bg-purple-800 hover:bg-purple-900 text-white font-bold py-2 px-5 rounded-xl shadow-md">
+            Confirm Pledge
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- KisanDirect JavaScript Core -->
+  <script src="app.js"></script>
+</body>
+</html>
